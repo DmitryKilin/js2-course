@@ -1,0 +1,8 @@
+# GitIgnore
+dev/
+.sass-cache
+config.codekit3
+*.map
+.idea/
+.DS_Store
+
