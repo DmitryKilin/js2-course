@@ -51,6 +51,7 @@
   float: right;
   margin: 13px;
   transition: 0.1ms;
+  outline: none;
 }
 .btn-basket:hover {
   background-color: #ff9966;
