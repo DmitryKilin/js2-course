@@ -1,8 +1,8 @@
 const products = [
-  {id: 1, title: 'Hazardouts teen 1', price: 2000, path: 'img/hazardous_teen_178x200.jpg'},
-  {id: 2, title: 'Hazardouts teen 2', price: 20, path: 'img/hazardous_teen_178x200.jpg'},
-  {id: 3, title: 'Hazardouts teen 3', price: 200, path: 'img/hazardous_teen_178x200.jpg'},
-  {id: 4, title: 'Hazardouts teen 4', price: 50, path: 'img/hazardous_teen_178x200.jpg'}
+  {id: 1, title: 'Hazardous teen 1', price: 2000, path: 'img/hazardous_teen_178x200.jpg'},
+  {id: 2, title: 'Hazardous teen 2', price: 20, path: 'img/hazardous_teen_178x200.jpg'},
+  {id: 3, title: 'Hazardous teen 3', price: 200, path: 'img/hazardous_teen_178x200.jpg'},
+  {id: 4, title: 'Hazardous teen 4', price: 50, path: 'img/hazardous_teen_178x200.jpg'}
 ]
 
 const renderProduct = (product) => {
