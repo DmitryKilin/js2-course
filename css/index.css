@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/* Таблицы стилей Sass */
+/* Адрес цветовой схемы: https://colorscheme.ru/#0xc2nJiPTstCY */
+/* HEX коды */
+.body {
+  background-color: #fff;
+  color: #000;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #ff9966;
+  min-height: 50px;
+}
+.header__title {
+  color: #ffcc99;
+  font-family: raleway;
+  font-size: 33px;
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0 auto;
+}
+
+.btn-basket {
+  background-color: #cc9933;
+  border-color: #ffcc99;
+  color: #ffcc99;
+  border-radius: 5px;
+  float: right;
+  margin: 13px;
+}
+
+/*# sourceMappingURL=index.css.map */
