@@ -110,8 +110,8 @@
   outline: none;
 }
 .product-card__buy-btn:hover {
-  color: #330099;
-  border-color: #330099;
+  color: #3300cc;
+  border-color: #3300cc;
 }
 .product-card__buy-btn:active {
   color: #9999ff;
