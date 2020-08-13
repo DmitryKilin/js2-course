@@ -12,26 +12,108 @@
   margin: 0 auto;
 }
 
+@font-face {
+  font-family: "raleway";
+  src: url("../fonts/raleway/raleway-extrabold-webfont.woff2") format("woff2"), url("../fonts/raleway/raleway-extrabold-webfont.woff") format("woff"), url("../fonts/raleway/raleway-extrabold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "montserrat";
+  src: url("../fonts/montserrat/montserrat-regular-webfont.woff2") format("woff2"), url("../fonts/montserrat/montserrat-regular-webfont.woff") format("woff"), url("../fonts/montserrat/montserrat-regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "montserrat";
+  src: url("../fonts/montserrat/montserrat-ultralight-webfont.woff2") format("woff2"), url("../fonts/montserrat/montserrat-ultralight-webfont.woff") format("woff"), url("../fonts/montserrat/montserrat-ultralight.otf");
+  font-weight: 300;
+  font-style: normal;
+}
 .header {
   background-color: #ff9966;
   min-height: 50px;
+  padding: 8px 25px;
 }
 .header__title {
   color: #ffcc99;
   font-family: raleway;
-  font-size: 33px;
   font-weight: 700;
   font-size: 40px;
   margin: 0 auto;
 }
 
 .btn-basket {
-  background-color: #cc9933;
+  background-color: #ffcc99;
   border-color: #ffcc99;
-  color: #ffcc99;
+  color: #ff9966;
   border-radius: 5px;
   float: right;
   margin: 13px;
+  transition: 0.1ms;
+}
+.btn-basket:hover {
+  background-color: #ff9966;
+  color: #ffcc99;
+}
+.btn-basket:active {
+  background-color: #ffcc99;
+  color: #ff9966;
+}
+
+.catalogue {
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #330099;
+  border-radius: 5px;
+}
+.product-card__title {
+  font-size: 20px;
+  font-family: montserrat;
+  font-weight: 400;
+}
+.product-card__img {
+  margin: 20px 10px;
+  border: 8px solid #fff;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px 8px #ccc;
+}
+.product-card__tally {
+  margin: 0;
+  font-family: montserrat;
+  font-weight: 300;
+  font-size: 16px;
+}
+.product-card__buy-btn {
+  padding: 0;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  color: inherit;
+  background-color: transparent;
+  margin: 10px;
+  font-size: 15px;
+  font-family: montserrat;
+  font-weight: 400;
+  transition: 0.1ms;
+}
+.product-card__buy-btn:hover {
+  color: #330099;
+  border-color: #330099;
+}
+.product-card__buy-btn:active {
+  color: #9999ff;
+  border-color: #9999ff;
 }
 
 /*# sourceMappingURL=index.css.map */
