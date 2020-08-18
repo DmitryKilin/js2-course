@@ -72,7 +72,7 @@ class ProductList extends Array {
       if (findedProductListItem) {
         findedProductListItem.count += product.count
       } else {
-        Array.prototype.push.call(this, product)
+        Array.prototype.push.call(this, new Product(product))
       }
     }
 
