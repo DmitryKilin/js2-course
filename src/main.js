@@ -83,7 +83,7 @@ class ProductList extends Array {
   }
 
   get total() {
-    return this.reduce((total, productListItem) => total + productListItem.total, 0)
+    return this.reduce((total, productListItem) => total += productListItem.total, 0)
   }
 
 }
