@@ -43,7 +43,7 @@
   margin: 0 auto;
 }
 
-.btn-basket {
+#btn-basket {
   background-color: #ffcc99;
   border-color: #ffcc99;
   color: #ff9966;
@@ -68,7 +68,7 @@
   margin: 0 auto;
   padding: 30px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .product-card {
@@ -96,7 +96,7 @@
   font-weight: 300;
   font-size: 16px;
 }
-.product-card__buy-btn {
+.product-card__buy-btn, .product-card__spin-btn {
   padding: 0;
   border: 1px solid #000;
   border-radius: 5px;
@@ -111,16 +111,78 @@
   transition: 0.1ms;
   outline: none;
 }
+.product-card__spin-btn {
+  border: none;
+}
+.product-card__input {
+  width: 3em;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 4px 0px 0px 0px;
+  font-size: 15px;
+  font-family: montserrat;
+  font-weight: 400;
+  text-align: center;
+}
+.product-card__input::-webkit-outer-spin-button, .product-card__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product-card__input[type=number] {
+  -moz-appearance: textfield;
+  margin: 0;
+}
 
 @media (hover: hover) {
-  .product-card__buy-btn:hover {
+  .product-card__buy-btn:hover, .product-card__spin-btn:hover {
     color: #3300cc;
     border-color: #3300cc;
   }
-  .product-card__buy-btn:active {
+  .product-card__buy-btn:active, .product-card__spin-btn:active {
     color: #9999ff;
     border-color: #9999ff;
   }
+}
+.basket {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border: 1px solid #cc9933;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  width: 940px;
+  max-width: 100%;
+  height: 440px;
+  max-height: 100%;
+  z-index: 1010;
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: auto;
+}
+.basket__cards {
+  display: flex;
+  justify-content: space-around;
+  clear: both;
+}
+.basket__stat {
+  text-align: center;
+  border-bottom: 1px solid #cc9933;
+  padding-bottom: 8px;
+}
+
+.basket.closed {
+  display: none;
+}
+
+.close-button {
+  border: none;
+  background: none;
+  color: #FF4500;
+  float: right;
+  margin: 10px 10px 0 0;
 }
 
 /*# sourceMappingURL=index.css.map */
