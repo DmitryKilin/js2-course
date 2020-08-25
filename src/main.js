@@ -1,144 +1,172 @@
+// LESSON 4.
+const txt = "\
+             One: 'Hi Mary.' Two: 'Oh, hi.'\
+             One: 'How are you doing?'\
+             Two: 'I'm doing alright. How about you?'\
+             One: 'Not too bad. The weather is great isn't it?'\
+             Two: 'Yes. It's absolutely beautiful today.'\
+             One: 'I wish it was like this more frequently.'\
+             Two: 'Me too.'\
+             One: 'So where are you going now?'\
+             Two: 'I'm going to meet a friend of mine at the department store.'\
+             One: 'Going to do a little shopping?'\
+             Two: 'Yeah, I have to buy some presents for my parents.'\
+             One: 'What's the occasion?'\
+             Two: 'It's their anniversary.'\
+             One: 'That's great. Well, you better get going. You don't want to be late.'\
+             Two: 'I'll see you next time.'\
+             One: 'Sure. Bye.'\
+            "
+const regexp = new RegExp("(?<![a-z])'", "gi")
+
+let answer = txt.replace(regexp,'"')
+
+console.log(answer)
+
+
+
+
 // LESSON 3.
-const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+// const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-class ProductsList {
-    constructor(container = '.catalogue'){
-        this.container = container;
-        this.goods = [];//массив товаров
-        this.allProducts = [];//массив объектов
-        this._getProducts()
-            .then(data => { //data - объект js
-                this.goods = [...data];
-                this.render()
-            });
-    }
-    _getProducts(){
-        return fetch(`${API}/catalogData.json`)
-            .then(result => result.json())
-            .catch(error => {
-                console.log(error);
-            })
-    }
-    calcSum(){
-        return this.allProducts.reduce((accum, item) => accum += item.price, 0);
-    }
-    render(){
-        const block = document.querySelector(this.container);
-        for (let product of this.goods){
-            const productObj = new ProductItem(product);
-            this.allProducts.push(productObj);
-            block.insertAdjacentHTML('beforeend', productObj.render());
-        }
-    }
-}
+// class ProductsList {
+//     constructor(container = '.catalogue'){
+//         this.container = container;
+//         this.goods = [];//массив товаров
+//         this.allProducts = [];//массив объектов
+//         this._getProducts()
+//             .then(data => { //data - объект js
+//                 this.goods = [...data];
+//                 this.render()
+//             });
+//     }
+//     _getProducts(){
+//         return fetch(`${API}/catalogData.json`)
+//             .then(result => result.json())
+//             .catch(error => {
+//                 console.log(error);
+//             })
+//     }
+//     calcSum(){
+//         return this.allProducts.reduce((accum, item) => accum += item.price, 0);
+//     }
+//     render(){
+//         const block = document.querySelector(this.container);
+//         for (let product of this.goods){
+//             const productObj = new ProductItem(product);
+//             this.allProducts.push(productObj);
+//             block.insertAdjacentHTML('beforeend', productObj.render());
+//         }
+//     }
+// }
 
-class ProductItem {
-    constructor(product, img = 'img/hazardous_teen_178x200.jpg'){
-        this.title = product.product_name;
-        this.price = product.price;
-        this.id = product.id_product;
-        this.img = img;
-    }
-    render(){
-        return `<div class="product-card" data-id="${this.id}>
-                      <h3 class="product-card__title">${this.title}</h3>
-                      <p class="product-card__tally">
-                        Price: <span class="product-card__price">${this.price}</span> &#8364;
-                      </p>
-                      <img class="product-card__img" src=${this.img} width="178" height="200" alt="Product picture">
-                      <button class="product-card__buy-btn">Купить</button>
-                      <p class="product-card__tally">
-                        Article: <span class="product-card__id">${this.id}</span>
-                      </p>
-                  </div>`
-    }
-}
+// class ProductItem {
+//     constructor(product, img = 'img/hazardous_teen_178x200.jpg'){
+//         this.title = product.product_name;
+//         this.price = product.price;
+//         this.id = product.id_product;
+//         this.img = img;
+//     }
+//     render(){
+//         return `<div class="product-card" data-id="${this.id}>
+//                       <h3 class="product-card__title">${this.title}</h3>
+//                       <p class="product-card__tally">
+//                         Price: <span class="product-card__price">${this.price}</span> &#8364;
+//                       </p>
+//                       <img class="product-card__img" src=${this.img} width="178" height="200" alt="Product picture">
+//                       <button class="product-card__buy-btn">Купить</button>
+//                       <p class="product-card__tally">
+//                         Article: <span class="product-card__id">${this.id}</span>
+//                       </p>
+//                   </div>`
+//     }
+// }
 
-class Basket {
-  constructor(container = '.basket') {
-    this.container = container;
-    this.goods = [];//массив товаров
-    this.allProducts = [];//массив объектов
-    this._getBasket()
-      .then(data => { //data - объект js
-          this.amount = data.amount;
-          this.countGoods = data.countGoods
-          this.goods = [...data.contents]
-          this.render()
-      });
-  }
-  render() {
-    const block = document.querySelector('.basket__cards');
-    const basketStatHTML =
-      `<p class="basket__stat">
-        <span class="product-card__price">Товаров: </span>
-        <span class="product-card__price">${this.countGoods}</span>
-        <span class="product-card__price">Стомостью: </span>
-        <span class="product-card__price">${this.amount}</span>
-       </p>`
+// class Basket {
+//   constructor(container = '.basket') {
+//     this.container = container;
+//     this.goods = [];//массив товаров
+//     this.allProducts = [];//массив объектов
+//     this._getBasket()
+//       .then(data => { //data - объект js
+//           this.amount = data.amount;
+//           this.countGoods = data.countGoods
+//           this.goods = [...data.contents]
+//           this.render()
+//       });
+//   }
+//   render() {
+//     const block = document.querySelector('.basket__cards');
+//     const basketStatHTML =
+//       `<p class="basket__stat">
+//         <span class="product-card__price">Товаров: </span>
+//         <span class="product-card__price">${this.countGoods}</span>
+//         <span class="product-card__price">Стомостью: </span>
+//         <span class="product-card__price">${this.amount}</span>
+//        </p>`
 
-    block.insertAdjacentHTML('beforebegin', basketStatHTML);
-    for (let product of this.goods){
-        const productObj = new BasketItem(product);
-        this.allProducts.push(productObj);
-        block.insertAdjacentHTML('beforeend', productObj.render());
-    }
-  }
+//     block.insertAdjacentHTML('beforebegin', basketStatHTML);
+//     for (let product of this.goods){
+//         const productObj = new BasketItem(product);
+//         this.allProducts.push(productObj);
+//         block.insertAdjacentHTML('beforeend', productObj.render());
+//     }
+//   }
 
-  //private
-  _getBasket() {
-    return fetch(`${API}/getBasket.json`)
-        .then(result => result.json())
-        .catch(error => {
-            console.log(error);
-        })
-  }
+//   //private
+//   _getBasket() {
+//     return fetch(`${API}/getBasket.json`)
+//         .then(result => result.json())
+//         .catch(error => {
+//             console.log(error);
+//         })
+//   }
 
-}
+// }
 
-class BasketItem {
-  constructor(product, img = 'img/hazardous_teen_178x200.jpg'){
-      this.title = product.product_name;
-      this.price = product.price;
-      this.id = product.id_product;
-      this.img = img;
-      this.quantity = product.quantity;
-  }
-  render(){
-      return `<div class="product-card" data-id="${this.id}>
-                    <h3 class="product-card__title">${this.title}</h3>
-                    <p class="product-card__tally">
-                      Price: <span class="product-card__price">${this.price}</span> &#8364;
-                    </p>
-                    <img class="product-card__img" src=${this.img} width="178" height="200"
-                      alt="Product picture">
-                    <p class="product-card__tally">
-                      Quantity:
-                    </p>
+// class BasketItem {
+//   constructor(product, img = 'img/hazardous_teen_178x200.jpg'){
+//       this.title = product.product_name;
+//       this.price = product.price;
+//       this.id = product.id_product;
+//       this.img = img;
+//       this.quantity = product.quantity;
+//   }
+//   render(){
+//       return `<div class="product-card" data-id="${this.id}>
+//                     <h3 class="product-card__title">${this.title}</h3>
+//                     <p class="product-card__tally">
+//                       Price: <span class="product-card__price">${this.price}</span> &#8364;
+//                     </p>
+//                     <img class="product-card__img" src=${this.img} width="178" height="200"
+//                       alt="Product picture">
+//                     <p class="product-card__tally">
+//                       Quantity:
+//                     </p>
 
-                    <div>
-                      <button class="product-card__spin-btn" type="button"
-                        onclick="this.nextElementSibling.stepDown()">\<</button>
-                      <input type="number" class="product-card__input" value="${this.quantity}" min="0">
-                      <button class="product-card__spin-btn" type="button"
-                        type="button" onclick="this.previousElementSibling.stepUp()">\></button>
-                    </div>
+//                     <div>
+//                       <button class="product-card__spin-btn" type="button"
+//                         onclick="this.nextElementSibling.stepDown()">\<</button>
+//                       <input type="number" class="product-card__input" value="${this.quantity}" min="0">
+//                       <button class="product-card__spin-btn" type="button"
+//                         type="button" onclick="this.previousElementSibling.stepUp()">\></button>
+//                     </div>
 
-                    <p class="product-card__tally">
-                      Article: <span class="product-card__id">${this.id}</span>
-                    </p>
-                </div>`
-  }
-}
+//                     <p class="product-card__tally">
+//                       Article: <span class="product-card__id">${this.id}</span>
+//                     </p>
+//                 </div>`
+//   }
+// }
 
-let list = new ProductsList();
-let basket = new Basket();
-const btnBasket = document.querySelector('#btn-basket');
-const secBasket = document.querySelector('.basket');
-const btnClose = document.querySelector('.close-button')
+// let list = new ProductsList();
+// let basket = new Basket();
+// const btnBasket = document.querySelector('#btn-basket');
+// const secBasket = document.querySelector('.basket');
+// const btnClose = document.querySelector('.close-button')
 
-btnBasket.addEventListener("click", function(){secBasket.classList.toggle("closed")});
-btnClose.addEventListener("click", function(){secBasket.classList.toggle("closed")});
+// btnBasket.addEventListener("click", function(){secBasket.classList.toggle("closed")});
+// btnClose.addEventListener("click", function(){secBasket.classList.toggle("closed")});
 
 
 
