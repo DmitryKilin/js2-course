@@ -5,4 +5,5 @@ config.codekit3
 *.map
 .idea/
 .DS_Store
+node_modules/
 
