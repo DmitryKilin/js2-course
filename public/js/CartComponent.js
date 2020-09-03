@@ -3,9 +3,8 @@
 Vue.component('cart', {
     data(){
       return {
-          cartUrl: '/getBasket.json',
+          // cartUrl: '/getBasket.json',
           cartItems: [],
-          imgCart: 'https://placehold.it/50x100',
           showCart: false
       }
     },
@@ -51,7 +50,8 @@ Vue.component('cart', {
             //     })
         },
         remove(item){
-            this.$parent.getJson(`${API}/addToBasket.json`)
+            let find = this.cartItems.find(el => el.id_product === item.id_product);
+            this.$parent.deleteJson(`/api/cart/${find.id_product}`)
                 .then(data => {
                     if (data.result === 1) {
                         if(item.quantity>1){
@@ -66,7 +66,7 @@ Vue.component('cart', {
     template: `<div>
 <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
         <div class="cart-block" v-show="showCart">
-            <cart-item v-for="item of cartItems" :key="item.id_product" :img="imgCart" :cart-item="item" @remove="remove">
+            <cart-item v-for="item of cartItems" :key="item.id_product" :img="item.img" :cart-item="item" @remove="remove">
             </cart-item>
         </div>
         </div>
@@ -74,11 +74,11 @@ Vue.component('cart', {
 });
 
 Vue.component('cart-item', {
-    props: ['img', 'cartItem'],
+    props: ['cartItem'],
     template: `
     <div class="cart-item">
                     <div class="product-bio">
-                        <img :src="img" alt="Some img">
+                        <img :src="cartItem.img" alt="Some img">
                         <div class="product-desc">
                             <div class="product-title">{{ cartItem.product_name }}</div>
                             <div class="product-quantity">Quantity: {{ cartItem.quantity }}</div>
