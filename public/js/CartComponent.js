@@ -1,9 +1,6 @@
-// const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
-
 Vue.component('cart', {
     data(){
       return {
-          // cartUrl: '/getBasket.json',
           cartItems: [],
           showCart: false
       }
@@ -35,19 +32,6 @@ Vue.component('cart', {
                         }
                     })
             }
-
-            // this.$parent.getJson(`${API}/addToBasket.json`)
-            //     .then(data => {
-            //         if(data.result === 1){
-            //             let find = this.cartItems.find(el => el.id_product === item.id_product);
-            //             if(find){
-            //                 find.quantity++;
-            //             } else {
-            //                 const prod = Object.assign({quantity: 1}, item);
-            //                 this.cartItems.push(prod)
-            //             }
-            //         }
-            //     })
         },
         remove(item){
             let find = this.cartItems.find(el => el.id_product === item.id_product);

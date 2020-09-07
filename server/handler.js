@@ -1,36 +1,29 @@
-const cart = require('./cart');
 const fs = require('fs');
-const logFilePath = 'server/db/stats.json'
+const cart = require('./cart');
+const logger = require('./logger');
 
 const actions = {
     add: cart.add,
     change: cart.change,
     remove: cart.remove
 };
-//HANDLER отвечает за изменение данных в самом файле
+
 let handler = (req, res, action, file) => {
-    logCart(action);
-    fs.readFile(file, 'utf-8', (err, data)=> {
+    fs.readFile(file, 'utf-8', (err, data) => {
         if(err){
-            res.sendStatus(404, JSON.stringify({result:0, text: err}));
+            res.sendStatus(404, JSON.stringify({result: 0, text: err}))
         } else {
-            let newCart = actions[action](JSON.parse(data), req);
+            let {name, newCart} = actions[action](JSON.parse(data), req);
             fs.writeFile(file, newCart, (err) => {
                 if(err){
-                    res.sendStatus(404, JSON.stringify({result:0, text: err}));
+                    res.send('{"result": 0}');
                 } else {
-                    res.send(JSON.stringify({result: 1}))
+                    logger(name, action);
+                    res.send('{"result": 1}');
                 }
-            });
+            })
         }
     })
 };
 
 module.exports = handler;
-
-// private
-function logCart(action) {
-    let logString = '';
-    logString = action + ' ';
-    fs.appendFile(logFilePath, logString, (err) => { console.log(err) })
-}
