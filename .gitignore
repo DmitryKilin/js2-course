@@ -6,4 +6,5 @@ config.codekit3
 .idea/
 .DS_Store
 node_modules/
+userCart.js
 
