@@ -1,5 +1,16 @@
+import cart from './CartComp'
+import products from './ProducComp'
+import filterEl from './FilterComp'
+import error from './ErrorComp'
+
 const app = new Vue({
     el: '#app',
+    components: {
+      cart,
+      products,
+      error,
+      'filter-el': filterEl
+    },
     data: {
         userSearch: '',
     },
@@ -63,3 +74,5 @@ const app = new Vue({
     }
 
 });
+
+export default app
